@@ -43,16 +43,16 @@ A Tape RSE only work with one shared file system.
 Using SLAC_RAW_DISK as an example, To trigger a dataset 
 arhciving, do the following:
 
-1. Close the dataset in Rucio (*rucio close <did>*)
+1. Close the dataset in Rucio (`rucio close <did>`)
 2. Add a Rucio metadata **arcBackup=SLAC_RAW_TAPE:need**. 
-   (*rucio set-metadata --did <did> --key arcBackup --value SLAC_RAW_TAPE:need*)
+   (`rucio set-metadata --did <did> --key arcBackup --value SLAC_RAW_TAPE:need`)
 
 The arhiving process is not immediately. But once it is 
 completed, the metadata will be updated to **arcBackup=SLAC_RAW_TAPE:done**.
-(To check, run *rucio get-metadata --plugin json <did> | grep arcBackup*),
+(To check, run `rucio get-metadata --plugin json <did> | grep arcBackup`),
 The corresponding archive zip file(s) can be found on
 the HPSSFS mount point at
-*sdfdtn005://local-Rubin-RSE-Backups/lsst/rucio/<scope>/<Dataset name>*.
+`sdfdtn005://local-Rubin-RSE-Backups/lsst/rucio/<scope>/<Dataset name>`.
 
 If a dataset is later openned again and new files are added,
 A new archiving will be needed. To do that, delete the copy
