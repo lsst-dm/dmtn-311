@@ -25,12 +25,8 @@ files that it can read through a shared file system.
 
 ## Set up and Configure a Tape RSE
 
-As it is designed, a regular RSE and a Tape RSE needs to
-work as a pair - to arhcive datasets in a regular RSE such
-as SLAC_RAW_DISK, a Tape RSE (for example, SLAC_RAW_TAPE)
-needs to be setup. 
-
-In the Tape RSE configuration file, the name of the pairing
+As it is designed, a Tape RSE instance will work with one 
+regular RSE. In the Tape RSE configuration file, the name of the 
 regular RSE (SLAC_RAW_DISK) and the Rucio scopes that it
 will work on needs to be specified. To work with new scopes,
 those scopes need to be added to the configuration file and
@@ -44,11 +40,13 @@ Using SLAC_RAW_DISK as an example, To trigger a dataset
 arhciving, do the following:
 
 1. Close the dataset in Rucio (`rucio close <did>`)
-2. Add a Rucio metadata **arcBackup=SLAC_RAW_TAPE:need**. 
-   (`rucio set-metadata --did <did> --key arcBackup --value SLAC_RAW_TAPE:need`)
+2. Add a Rucio metadata **arcBackup=SLAC_RAW_DISK_BKUP:need**. 
+   (`rucio set-metadata --did <did> --key arcBackup 
+                        --value SLAC_RAW_DISK_BKUP:need`)
 
 The arhiving process is not immediately. But once it is 
-completed, the metadata will be updated to **arcBackup=SLAC_RAW_TAPE:done**.
+completed, the metadata will be updated to 
+**arcBackup=SLAC_RAW_DISK_BKUP:done**.
 (To check, run `rucio get-metadata --plugin json <did> | grep arcBackup`),
 The corresponding archive zip file(s) can be found on
 the HPSSFS mount point at
