@@ -38,7 +38,7 @@ the Tape RSE instacne needs to be restarted.
 
 A Tape RSE only work with one shared file system.
 
-## How to Archive Data to the Tape RSE
+## How to Archive Data to a Tape RSE
 
 Using SLAC_RAW_DISK as an example, To trigger a dataset 
 arhciving, do the following:
@@ -52,6 +52,7 @@ completed, the metadata will be updated to **arcBackup=SLAC_RAW_TAPE:done**.
 (To check, run `rucio get-metadata --plugin json <did> | grep arcBackup`),
 The corresponding archive zip file(s) can be found on
 the HPSSFS mount point at
+
 `sdfdtn005://local-Rubin-RSE-Backups/lsst/rucio/<scope>/<Dataset name>`.
 
 If a dataset is later openned again and new files are added,
