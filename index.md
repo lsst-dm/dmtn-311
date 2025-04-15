@@ -41,8 +41,11 @@ arhciving, do the following:
 
 1. Close the dataset in Rucio (`rucio close <did>`)
 2. Add a Rucio metadata **arcBackup=SLAC_RAW_DISK_BKUP:need**. 
-   (`rucio set-metadata --did <did> --key arcBackup 
-                        --value SLAC_RAW_DISK_BKUP:need`)
+
+```
+rucio set-metadata --did <did> --key arcBackup 
+                               --value SLAC_RAW_DISK_BKUP:need
+```
 
 The arhiving process is not immediately. But once it is 
 completed, the metadata will be updated to 
